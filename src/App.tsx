@@ -112,7 +112,7 @@ export default function App() {
                 className="btn"
                 onClick={() => setState({ kind: 'ready', data: SAMPLE_DATA, source: 'sample', loadedAt: new Date() })}
               >
-                Use flightdb.sql sample
+                Use sample data
               </button>
             </div>
           </div>

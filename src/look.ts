@@ -45,6 +45,10 @@ const KNOWN: Record<string, string> = {
   southwest: '#2c4fa3',
   'united airlines': '#1d6fb8',
   delta: '#9b1d32',
+  'south african airways': '#0a4a8f',
+  flysafair: '#e8711a',
+  airlink: '#6b2c91',
+  cemair: '#1f8a8a',
 };
 const FALLBACK = ['#2e8b57', '#d2691e', '#6a4fb3', '#b8860b', '#20808a'];
 
