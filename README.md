@@ -25,6 +25,20 @@ Stack: Vite + React + TypeScript. No UI library; sprites are plain SVG rectangle
 `Passenger` has no flight of its own in the backend – the link is the `Reservation` entity – which
 is why the manifest is built from `/reservations`.
 
+### Screenshots: API JSON next to the UI
+
+`GET /flights` → one aircraft per flight on the apron:
+
+![GET /flights next to the apron](docs/screenshots/flights-vs-apron.png)
+
+`GET /reservations` (flight 1) → the cabin manifest for tail 1:
+
+![GET /reservations next to the cabin manifest](docs/screenshots/reservations-vs-manifest.png)
+
+`GET /passengers` → people and bags in the terminal:
+
+![GET /passengers next to the terminal](docs/screenshots/passengers-vs-terminal.png)
+
 Code to read first: `src/api.ts` (all HTTP), `src/types.ts` (mirrors the JPA entities).
 
 ## Run it
@@ -46,8 +60,9 @@ Keep `/flightservices` on the end – it's `server.servlet.context-path` in `app
 The address is remembered in the browser. To set a default instead, copy `.env.example` to
 `.env.local` and edit `VITE_API_BASE`.
 
-**No EC2 running?** Either press *Use flightdb.sql sample* on the error screen (clearly labelled as
-sample data), or run a read-only mock of the API with the same rows:
+**No EC2 running?** Either press *Use sample data* on the error screen (clearly labelled as
+sample data), or run a read-only mock of the API with the same rows (South African airlines and
+domestic routes – SAA, FlySafair, Airlink, CemAir between JNB, CPT, DUR, PLZ, GRJ, BFN and ELS):
 
 ```powershell
 npm run mock      # serves http://localhost:8080/flightservices
@@ -92,4 +107,4 @@ Notes:
 | `npm run dev` | Dev server with hot reload |
 | `npm run build` | Type-check and build to `dist/` |
 | `npm run preview` | Serve the built `dist/` |
-| `npm run mock` | Read-only mock of the API with the flightdb.sql rows |
+| `npm run mock` | Read-only mock of the API with the South African sample rows |
