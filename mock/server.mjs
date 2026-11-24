@@ -1,30 +1,30 @@
 // Tiny stand-in for the Spring Boot app, for working on the UI without EC2.
-// Serves the flightdb.sql sample rows at the same paths:  npm run mock
+// Serves the same South African sample rows as src/sampleData.ts:  npm run mock
 import http from 'node:http';
 
 const flights = [
-  [1, 'AA1', 'American Airlines', 'AUS', 'NYC', '2018-02-05', '03:14:07'],
-  [2, 'AA2', 'American Airlines', 'AUS', 'NYC', '2018-02-05', '05:14:07'],
-  [3, 'AA3', 'American Airlines', 'AUS', 'NYC', '2018-02-05', '06:14:07'],
-  [4, 'SW1', 'South West', 'AUS', 'NYC', '2018-02-05', '07:14:07'],
-  [5, 'UA1', 'United Airlines', 'NYC', 'DAL', '2018-02-05', '10:14:07'],
-  [6, 'UA1', 'United Airlines', 'NYC', 'DAL', '2018-02-05', '10:14:07'],
-  [7, 'SW1', 'South West', 'AUS', 'NYC', '2018-02-06', '07:14:07'],
-  [8, 'SW2', 'South West', 'AUS', 'NYC', '2018-02-06', '08:14:07'],
-  [9, 'SW3', 'South West', 'NYC', 'DAL', '2018-02-06', '10:14:07'],
-  [10, 'UA1', 'United Airlines', 'NYC', 'DAL', '2018-02-06', '10:14:07'],
+  [1, 'SA301', 'South African Airways', 'JNB', 'CPT', '2026-12-05', '06:00:00'],
+  [2, 'SA303', 'South African Airways', 'JNB', 'CPT', '2026-12-05', '08:00:00'],
+  [3, 'SA541', 'South African Airways', 'JNB', 'DUR', '2026-12-05', '09:30:00'],
+  [4, 'FA211', 'FlySafair', 'JNB', 'CPT', '2026-12-05', '07:15:00'],
+  [5, '4Z851', 'Airlink', 'CPT', 'PLZ', '2026-12-05', '10:45:00'],
+  [6, '4Z853', 'Airlink', 'CPT', 'GRJ', '2026-12-05', '12:20:00'],
+  [7, 'FA451', 'FlySafair', 'CPT', 'DUR', '2026-12-06', '06:40:00'],
+  [8, 'FA562', 'FlySafair', 'DUR', 'JNB', '2026-12-06', '08:10:00'],
+  [9, '5Z702', 'CemAir', 'JNB', 'BFN', '2026-12-06', '09:50:00'],
+  [10, '4Z162', 'Airlink', 'JNB', 'ELS', '2026-12-06', '11:05:00'],
 ].map(([id, flightNumber, operatingAirlines, departureCity, arrivalCity, d, t]) => ({
   id, flightNumber, operatingAirlines, departureCity, arrivalCity,
   dateOfDeparture: d, estimatedDepartureTime: `${d}T${t}`,
 }));
 
 const passengers = [
-  [1, 'John', 'Smith', 'Michael', 'john.smith@example.com', '5125550101'],
-  [2, 'Emily', 'Johnson', null, 'emily.johnson@example.com', '5125550102'],
-  [3, 'Carlos', 'Rivera', 'Antonio', 'carlos.rivera@example.com', '2125550103'],
-  [4, 'Aisha', 'Khan', null, 'aisha.khan@example.com', '2125550104'],
-  [5, 'Thabo', 'Nkosi', 'Sipho', 'thabo.nkosi@example.com', '2145550105'],
-  [6, 'Sarah', 'Williams', 'Jane', 'sarah.w@example.com', '2145550106'],
+  [1, 'Sipho', 'Dlamini', 'Bongani', 'sipho.dlamini@example.com', '0825550101'],
+  [2, 'Lerato', 'Mokoena', null, 'lerato.mokoena@example.com', '0835550102'],
+  [3, 'Pieter', 'van der Merwe', 'Johannes', 'pieter.vdm@example.com', '0715550103'],
+  [4, 'Naledi', 'Khumalo', null, 'naledi.khumalo@example.com', '0725550104'],
+  [5, 'Thabo', 'Nkosi', 'Sipho', 'thabo.nkosi@example.com', '0845550105'],
+  [6, 'Ayesha', 'Patel', 'Zahra', 'ayesha.patel@example.com', '0615550106'],
 ].map(([id, firstName, lastName, middleName, email, phone]) => ({ id, firstName, lastName, middleName, email, phone }));
 
 const reservations = [
